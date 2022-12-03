@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:voting_system/screen/login.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +25,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _auth = false;
-
   @override
   Widget build(BuildContext context) {
-    // return _auth ? const HomeScreen() : LoginScreen();
-    return const LoginScreen();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Si ves esto, te autenticaste bien',
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
