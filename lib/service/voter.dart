@@ -36,7 +36,7 @@ class VoterService {
   }
 
   static Future<String> getJwt(String token) async {
-    Uri uri = Uri.parse(_host + '/vote/v1/auth/' + token + '/jwt');
+    Uri uri = Uri.parse('$_host/vote/v1/auth/$token/jwt');
     Map<String, String> headers = {
       'accept': _mime,
       'Content-Type': _mime,

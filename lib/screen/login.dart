@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:voting_system/service/voter.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -109,21 +108,6 @@ class LoginScreen extends StatelessWidget {
           )
         ],
       ),
-
-      // Column(
-      //  children: [
-      //    Expanded(
-      //        child: Center(
-      //          child: SizedBox(
-      //            height: 50,
-      //            child: SignInButton(
-      //              Buttons.Google,
-      //              elevation: 5,
-      //              text: 'Iniciar sesión',
-      //              shape: RoundedRectangleBorder(
-      //                  borderRadius: BorderRadius.circular(20)
-      //              ),
-      //              onPressed: () => VoterService.login(context),
     );
   }
 }
