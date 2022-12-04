@@ -70,39 +70,42 @@ class LoginScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 50,),
-          Container(
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: const Color(0xcc009850)
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 18,
-                  height: 18,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8)
-                  ),
-                  child: const FlutterLogo(size: 18,),
+          TextButton(
+              onPressed: () => VoterService.login(context),
+              child: Container(
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xcc009850)
                 ),
-                const SizedBox(width: 20,),
-                const Text(
-                  "Inicia con google",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xffedf2f4),
-                    fontSize: 14,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w700
-                  ),
-                )
-              ],
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 18,
+                      height: 18,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: const FlutterLogo(size: 18,),
+                    ),
+                    const SizedBox(width: 20,),
+                    const Text(
+                      "Inicia con google",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color(0xffedf2f4),
+                          fontSize: 14,
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.w700
+                      ),
+                    )
+                  ],
+                ),
+              )
           )
         ],
       ),
