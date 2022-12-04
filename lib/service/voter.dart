@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:utem/screen/authorization.dart';
+import 'package:voting_system/screen/authorization.dart';
 
 class VoterService {
   static const String _host = "https://api.sebastian.cl";

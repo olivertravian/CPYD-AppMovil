@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utem/screen/home.dart';
-import 'package:utem/screen/login.dart';
-import 'package:utem/service/voter.dart';
+import 'package:voting_system/screen/home.dart';
+import 'package:voting_system/screen/login.dart';
+import 'package:voting_system/service/voter.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AuthorizationScreen extends StatelessWidget {
