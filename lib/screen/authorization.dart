@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:voting_system/screen/home.dart';
 import 'package:voting_system/screen/login.dart';
 import 'package:voting_system/service/voter.dart';
+import 'package:voting_system/service/secure_storage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AuthorizationScreen extends StatelessWidget {
@@ -25,16 +26,19 @@ class AuthorizationScreen extends StatelessWidget {
       navigationDelegate: (delegate) {
         final Uri responseUri = Uri.parse(delegate.url);
         final String path = responseUri.path;
-        final bool ok = path.endsWith('/' + token + '/result');
+        final bool ok = path.endsWith('/$token/result');
         if (ok) {
-          VoterService.getJwt(token).then((value) => print(value));
+          // Store JWT
+          VoterService.getJwt(token).then((value) => UserSecureStorage.saveWithJwt(value));
 
           Navigator.pop(context);
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      ok ? const HomeScreen() : const LoginScreen()));
+                      ok ? const HomeScreen() : const LoginScreen()
+              )
+          );
         }
 
         return NavigationDecision.navigate;
