@@ -65,7 +65,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/voto.png
+    - assets/google.png
+    - assets/members.png
+    - assets/polls.png
+    - assets/results.png
+    - assets/send.png
+    - assets/user.png
+    - assets/vote.png
+    - assets/voting_system.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -81,58 +88,58 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: lib/assets/Inter/Inter-Thin.otf
+        - asset: assets/Inter/Inter-Thin.otf
           weight: 100
           style: normal
-        - asset: lib/assets/Inter/Inter-ThinItalic.otf
+        - asset: assets/Inter/Inter-ThinItalic.otf
           weight: 100
           style: italic
-        - asset: lib/assets/Inter/Inter-ExtraLight.otf
+        - asset: assets/Inter/Inter-ExtraLight.otf
           weight: 200
           style: normal
-        - asset: lib/assets/Inter/Inter-ExtraLightItalic.otf
+        - asset: assets/Inter/Inter-ExtraLightItalic.otf
           weight: 200
           style: italic
-        - asset: lib/assets/Inter/Inter-Light.otf
+        - asset: assets/Inter/Inter-Light.otf
           weight: 300
           style: normal
-        - asset: lib/assets/Inter/Inter-LightItalic.otf
+        - asset: assets/Inter/Inter-LightItalic.otf
           weight: 300
           style: italic
-        - asset: lib/assets/Inter/Inter-Regular.otf
+        - asset: assets/Inter/Inter-Regular.otf
           weight: 400
           style: normal
-        - asset: lib/assets/Inter/Inter-Italic.otf
+        - asset: assets/Inter/Inter-Italic.otf
           weight: 400
           style: italic
-        - asset: lib/assets/Inter/Inter-Medium.otf
+        - asset: assets/Inter/Inter-Medium.otf
           weight: 500
           style: normal
-        - asset: lib/assets/Inter/Inter-MediumItalic.otf
+        - asset: assets/Inter/Inter-MediumItalic.otf
           weight: 500
           style: italic
-        - asset: lib/assets/Inter/Inter-SemiBold.otf
+        - asset: assets/Inter/Inter-SemiBold.otf
           weight: 600
           style: normal
-        - asset: lib/assets/Inter/Inter-SemiBoldItalic.otf
+        - asset: assets/Inter/Inter-SemiBoldItalic.otf
           weight: 600
           style: italic
-        - asset: lib/assets/Inter/Inter-Bold.otf
+        - asset: assets/Inter/Inter-Bold.otf
           weight: 700
           style: normal
-        - asset: lib/assets/Inter/Inter-BoldItalic.otf
+        - asset: assets/Inter/Inter-BoldItalic.otf
           weight: 700
           style: italic
-        - asset: lib/assets/Inter/Inter-ExtraBold.otf
+        - asset: assets/Inter/Inter-ExtraBold.otf
           weight: 800
           style: normal
-        - asset: lib/assets/Inter/Inter-ExtraBoldItalic.otf
+        - asset: assets/Inter/Inter-ExtraBoldItalic.otf
           weight: 800
           style: italic
-        - asset: lib/assets/Inter/Inter-Black.otf
+        - asset: assets/Inter/Inter-Black.otf
           weight: 900
           style: normal
-        - asset: lib/assets/Inter/Inter-BlackItalic.otf
+        - asset: assets/Inter/Inter-BlackItalic.otf
           weight: 900
           style: italic
 

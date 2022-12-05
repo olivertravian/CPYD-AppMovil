@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               Container(
                 width: 421,
                 height: 422,
-                child: Image.asset('lib/assets/voto.png'),
+                child: Image.asset('assets/voting_system.png'),
               )
             ],
           ),
@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8)
                       ),
-                      child: const FlutterLogo(size: 18,),
+                      child: Image.asset('assets/google.png'),
                     ),
                     const SizedBox(width: 20,),
                     const Text(

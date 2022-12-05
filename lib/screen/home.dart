@@ -28,6 +28,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late var email = "";
   late var role = "";
+  late var picture = "";
 
   @override
   void initState() {
@@ -38,10 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Future init() async {
     email = await UserSecureStorage.getEmail() ?? "";
     role = await UserSecureStorage.getRole() ?? "";
+    picture = await UserSecureStorage.getPicture() ?? "";
 
     setState(() {
       email = email;
       role = role;
+      picture = picture;
     });
   }
 
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8)
                   ),
-                  child: const FlutterLogo(size: 100,),
+                  child: Image.asset(picture),
                 ),
                 const SizedBox(width: 15,),
                 Padding(
@@ -140,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8)
                       ),
-                      child: const FlutterLogo(size: 18,),
+                      child: Image.asset('assets/polls.png'),
                     ),
                     const SizedBox(width: 10,),
                     const Text(
@@ -175,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8)
                       ),
-                      child: const FlutterLogo(size: 18,),
+                      child: Image.asset('assets/results.png'),
                     ),
                     const SizedBox(width: 10,),
                     const Text(
@@ -210,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8)
                       ),
-                      child: const FlutterLogo(size: 18,),
+                      child: Image.asset('assets/members.png'),
                     ),
                     const SizedBox(width: 10,),
                     const Text(

@@ -15,7 +15,7 @@ class UserSecureStorage {
     final Map<String, dynamic> payload = Jwt.parseJwt(jwt);
     final String email = (payload['email'] ?? 'unknown').toString();
     const String name = "";
-    const String picture = "";
+    const String picture = "assets/user.png";
     const String role = "Estudiante";
 
     // Store all data
