@@ -13,10 +13,10 @@ class UserSecureStorage {
   static Future saveWithJwt(String jwt) async {
     // Decode jwt
     final Map<String, dynamic> payload = Jwt.parseJwt(jwt);
-    final String name = (payload['name'] ?? '').toString();
-    final String email = (payload['email'] ?? '').toString();
-    final String picture = (payload['picture'] ?? '').toString();
-    const String role = "Student";
+    final String email = (payload['email'] ?? 'unknown').toString();
+    const String name = "";
+    const String picture = "";
+    const String role = "Estudiante";
 
     // Store all data
     await _storage.write(key: _keyUsername, value: name);

@@ -26,6 +26,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late var email = "";
+  late var role = "";
+
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  Future init() async {
+    email = await UserSecureStorage.getEmail() ?? "";
+    role = await UserSecureStorage.getRole() ?? "";
+
+    setState(() {
+      email = email;
+      role = role;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,22 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        "Arturo vidal",
+                        email,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color(0xffedf2f4),
                             fontSize: 16,
                             fontFamily: "Inter",
                             fontWeight: FontWeight.w700
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Text(
-                        "Estudiante",
+                        role,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10,
                             fontStyle: FontStyle.italic
