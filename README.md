@@ -1,15 +1,18 @@
 # CPYD-AppMovil
 Proyecto aplicación movil como frontend de la api rest
 
-## Getting Started
+## 1. Instalación
+- Instalar librerias con:
+``` bash
+$ flutter pub get
+$ flutter packages get # ??
+```
 
-This project is a starting point for a Flutter application.
+## 2. Uso
+- ..
 
-A few resources to get you started if this is your first Flutter project:
+## 3. Integrantes
+- Julio Aceituno Zelaya (jaceituno@utem.cl)
+- Enrique Villalobos (evillalobos@utem.cl)
+- Oliver Chacón Álvarez (oliver.chacona@utem.cl)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
