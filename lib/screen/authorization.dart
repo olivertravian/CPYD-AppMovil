@@ -29,7 +29,7 @@ class AuthorizationScreen extends StatelessWidget {
         final bool ok = path.endsWith('/$token/result');
         if (ok) {
           // Store JWT
-          VoterService.getJwt(token).then((value) => UserSecureStorage.saveWithJwt(value));
+          VoterService.getJwt(token).then((value) => UserSecureStorage.saveWithJwt(token, value));
 
           Navigator.pop(context);
           Navigator.pushReplacement(

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:voting_system/service/voter.dart';
+import 'package:voting_system/model/poll.dart';
+import 'package:voting_system/screen/home.dart';
 
 class PollsScreen extends StatelessWidget {
-  const PollsScreen({super.key});
+  late Future<List<Poll>> polls;
+
+  PollsScreen({super.key}) {
+    polls = VoterService.getPolls();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,11 @@ class PollsScreen extends StatelessWidget {
               children: [
                 TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: Image.asset('assets/back.png')
+                    child: SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: Image.asset('assets/back.png'),
+                    )
                 ),
                 const SizedBox(width: 30,),
                 const Text(
@@ -47,16 +58,12 @@ class PollsScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Titulo votacion1",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w700
-                  ),
+              children: [
+                FutureBuilder<List<Poll>> (
+                  future: polls,
+                  builder: (context, snapshot) {
+                    return const Text("hola");
+                  },
                 )
               ],
             ),

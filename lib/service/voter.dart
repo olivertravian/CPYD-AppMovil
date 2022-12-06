@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:voting_system/screen/authorization.dart';
+import 'package:voting_system/service/secure_storage.dart';
+import 'package:voting_system/model/poll.dart';
 
 class VoterService {
   static const String _host = "https://api.sebastian.cl";
@@ -51,5 +53,29 @@ class VoterService {
       jwt = result['jwt'];
     }
     return jwt;
+  }
+
+  static Future<List<Poll>> getPolls() async {
+    final String token = await UserSecureStorage.getJwt() ?? "";
+
+    Uri uri = Uri.parse('$_host/vote/v1/voter/polls');
+    Map<String, String> headers = {
+      'accept': _mime,
+      'Content-Type': _mime,
+      'Authorization': token,
+    };
+
+    List<Poll> polls = [];
+
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      var result = json.decode(response.body);
+
+      for (var poll in result) {
+        polls.add(Poll.fromJSON(poll));
+      }
+    }
+
+    return polls;
   }
 }

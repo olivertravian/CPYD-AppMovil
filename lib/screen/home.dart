@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
               TextButton(
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const PollsScreen())
+                    MaterialPageRoute(builder: (context) => PollsScreen())
                   ),
                   child: Container(
                     width: 190,

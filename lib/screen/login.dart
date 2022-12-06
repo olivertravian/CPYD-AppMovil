@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 421,
                 height: 422,
                 child: Image.asset('assets/voting_system.png'),
