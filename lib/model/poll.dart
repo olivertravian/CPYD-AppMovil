@@ -4,7 +4,7 @@ class Poll {
   final String name;
   final String token;
   final List<PollOption> options;
-  final bool active;
+  final String active;
 
   const Poll({required this.name, required this.token, required this.options, required this.active });
 
@@ -15,11 +15,16 @@ class Poll {
       options.add(PollOption.fromJSON(json['options'][i]));
     }
 
+    var activeText = "Inactivo";
+    if (json['active']) {
+      activeText = "Activo";
+    }
+
     return Poll(
         name: json['name'],
         token: json['token'],
         options: options,
-        active: json['active']
+        active: activeText
     );
   }
 }

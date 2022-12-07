@@ -69,8 +69,75 @@ class PollsScreen extends StatelessWidget {
                         ? const CircularProgressIndicator()
                         : Column(
                       children: List.generate(snapshot.data!.length, (index) {
-                        print(snapshot.data?[index].name);
-                        return Text(snapshot.data?[index].name ?? "aa");
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              snapshot.data?[index].name ?? "unknown",
+                              style: const TextStyle(
+                                  color: Color(0xffedf2f4),
+                                  fontSize: 20,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w500
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            SizedBox(
+                              width: double.infinity,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    snapshot.data?[index].active ?? "unknown",
+                                    style: const TextStyle(
+                                        color: Color(0xffedf2f4),
+                                        fontSize: 10,
+                                        fontFamily: "Inter",
+                                        fontStyle: FontStyle.italic
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color(0xff009850)
+                                    ),
+                                    padding: const EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: 18,
+                                          height: 18,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8)
+                                          ),
+                                          child: Image.asset('assets/vote.png'),
+                                        ),
+                                        const SizedBox(width: 10,),
+                                        const Text(
+                                          "Ir a votar",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Color(0xffedf2f4),
+                                              fontSize: 14,
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w700
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        );
                       }),
                     );
                   },

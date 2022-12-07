@@ -70,7 +70,7 @@ class VoterService {
     if (response.statusCode == 200) {
       var result = json.decode(utf8.decode(response.bodyBytes));
 
-      List<Poll> polls = List.filled(result.length, const Poll(name: "", token: "", options: [], active: false));
+      List<Poll> polls = List.filled(result.length, const Poll(name: "", token: "", options: [], active: ""));
 
       for (var i = 0; i< result.length; i++) {
         polls[i] = Poll.fromJSON(result[i]);
