@@ -7,7 +7,7 @@ class PollsScreen extends StatelessWidget {
   late Future<List<Poll>> polls;
 
   PollsScreen({super.key}) {
-    polls = VoterService.getPolls();
+    // polls = ;
   }
 
   @override
@@ -21,7 +21,7 @@ class PollsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -52,17 +52,27 @@ class PollsScreen extends StatelessWidget {
           ),
           const SizedBox(height: 40,),
           Container(
-            width: 330,
-            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10)
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FutureBuilder<List<Poll>> (
-                  future: polls,
+                  future: VoterService.getPolls(),
                   builder: (context, snapshot) {
-                    return const Text("hola");
+                    return snapshot.connectionState == ConnectionState.waiting
+                        ? const CircularProgressIndicator()
+                        : Column(
+                      children: List.generate(snapshot.data!.length, (index) {
+                        print(snapshot.data?[index].name);
+                        return Text(snapshot.data?[index].name ?? "aa");
+                      }),
+                    );
                   },
                 )
               ],

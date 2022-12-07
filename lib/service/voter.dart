@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:voting_system/screen/authorization.dart';
 import 'package:voting_system/service/secure_storage.dart';
 import 'package:voting_system/model/poll.dart';
+import 'package:diacritic/diacritic.dart';
 
 class VoterService {
   static const String _host = "https://api.sebastian.cl";
@@ -65,17 +66,20 @@ class VoterService {
       'Authorization': token,
     };
 
-    List<Poll> polls = [];
-
     final response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      var result = json.decode(response.body);
+      var result = json.decode(utf8.decode(response.bodyBytes));
 
-      for (var poll in result) {
-        polls.add(Poll.fromJSON(poll));
+      List<Poll> polls = List.filled(result.length, const Poll(name: "", token: "", options: [], active: false));
+
+      for (var i = 0; i< result.length; i++) {
+        polls[i] = Poll.fromJSON(result[i]);
+        // polls.add();
       }
+      return polls;
+
     }
 
-    return polls;
+    return [];
   }
 }

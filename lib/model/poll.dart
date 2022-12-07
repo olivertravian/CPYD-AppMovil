@@ -8,18 +8,18 @@ class Poll {
 
   const Poll({required this.name, required this.token, required this.options, required this.active });
 
-  factory Poll.fromJSON(Map<String, dynamic> json) {
+  static Poll fromJSON(Map<String, dynamic> json) {
     List<PollOption> options = [];
 
-    for (var option in json['options']) {
-      options.add(PollOption.fromJSON(option));
+    for (var i = 0; i< json['options'].length; i++) {
+      options.add(PollOption.fromJSON(json['options'][i]));
     }
 
     return Poll(
-      name: json['name'],
-      token: json['token'],
-      options: options,
-      active: json['active']
+        name: json['name'],
+        token: json['token'],
+        options: options,
+        active: json['active']
     );
   }
 }

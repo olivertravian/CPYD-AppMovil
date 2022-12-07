@@ -4,11 +4,14 @@ class PollOption {
 
   const PollOption({required this.selection, required this.choice});
 
-  factory PollOption.fromJSON(Map<String, dynamic> json) {
-    return PollOption(
-      selection: json['selection'],
-      choice: json['choice'],
+  static PollOption fromJSON(Map<String, dynamic> json) {
+
+    var opt = PollOption(
+      selection: json['selection'].toString(),
+      choice: json['choice'].toString(),
     );
+
+    return opt;
   }
 
 }
