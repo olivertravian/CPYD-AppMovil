@@ -10,7 +10,7 @@ class PollsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff00417c),
-      padding: const EdgeInsets.symmetric(vertical: 50, ),
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -31,7 +31,7 @@ class PollsScreen extends StatelessWidget {
                       child: Image.asset('assets/back.png'),
                     )
                 ),
-                const SizedBox(width: 30,),
+                const SizedBox(width: 20,),
                 const Text(
                   "Encuestas",
                   textAlign: TextAlign.center,
@@ -106,8 +106,9 @@ class PollsScreen extends StatelessWidget {
                                         onPressed: () => Navigator.push(
                                             context,
                                             MaterialPageRoute(builder: (context) => ResultsScreen(
+                                              pollToken: snapshot.data?[index].token ?? "unknown",
                                               pollTitle: snapshot.data?[index].name ?? "unknown",
-                                              pollOptions: snapshot.data?[index].options ?? []
+                                              pollOptions: snapshot.data?[index].options ?? [],
                                             ))
                                         ),
                                         child: Row(
