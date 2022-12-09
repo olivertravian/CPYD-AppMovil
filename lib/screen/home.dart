@@ -59,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
+          Container(
+            width: 360,
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -75,27 +76,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Image.asset(picture),
                 ),
                 const SizedBox(width: 15,),
-                Padding(
-                  padding: const EdgeInsets.all(10),
+                Expanded(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        email,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            color: Color(0xffedf2f4),
-                            fontSize: 16,
-                            fontFamily: "Inter",
-                            fontWeight: FontWeight.w700
+                          email,
+                          style: const TextStyle(
+                              color: Color(0xffedf2f4),
+                              fontSize: 16,
+                              fontFamily: "Inter",
+                              fontWeight: FontWeight.w700
+                          ),
                         ),
-                      ),
                       const SizedBox(height: 10,),
                       Text(
                         role,
-                        textAlign: TextAlign.center,
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10,
