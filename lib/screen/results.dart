@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:voting_system/model/poll_option.dart';
 
-class ResultsScreen extends StatelessWidget {
+class ResultsScreen extends StatefulWidget {
+  final String pollToken;
   final String pollTitle;
   final List<PollOption> pollOptions;
 
-  const ResultsScreen({super.key, required this.pollTitle, required this.pollOptions});
+  const ResultsScreen({super.key, required this.pollToken , required this.pollTitle, required this.pollOptions});
+
+  @override
+  State<ResultsScreen> createState() => _ResultsState();
+}
+
+class _ResultsState extends State<ResultsScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff00417c),
-      padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 30 ),
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -32,7 +39,7 @@ class ResultsScreen extends StatelessWidget {
                       child: Image.asset('assets/back.png'),
                     )
                 ),
-                const SizedBox(width: 30,),
+                const SizedBox(width: 20,),
                 const Text(
                   "Realizar votación",
                   textAlign: TextAlign.center,
@@ -48,7 +55,7 @@ class ResultsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40,),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -58,7 +65,7 @@ class ResultsScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    pollTitle,
+                    widget.pollTitle,
                     style: const TextStyle(
                       color: Color(0xffedf2f4),
                       fontSize: 20,
@@ -81,7 +88,7 @@ class ResultsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40,),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -93,42 +100,42 @@ class ResultsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: List.generate(
-                    pollOptions.length,
-                      (index){
-                        return Column(
-                          children: [
-                            Container(
-                              width: 330,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xffedf2f4)
-                              ),
-                              padding: const EdgeInsets.all(20),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          "${pollOptions[index].selection}. ${pollOptions[index].choice}",
-                                          style: const TextStyle(
-                                              color: Color(0xff22223b),
-                                              fontSize: 14,
-                                              fontFamily: "Inter",
-                                              fontWeight: FontWeight.w600
-                                          ),
-                                        ),
-                                      )
-                                  )
-                                ],
-                              ),
+                    widget.pollOptions.length,
+                    (index) {
+                      return Column(
+                        children: [
+                          Container(
+                            width: 330,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color(0xffedf2f4)
                             ),
-                            const SizedBox(height: 20,)
-                          ],
-                        );
-                      }
+                            padding: const EdgeInsets.all(20),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    child: SizedBox(
+                                      child: Text(
+                                        "${widget.pollOptions[index].selection}. ${widget.pollOptions[index].choice}",
+                                        style: const TextStyle(
+                                            color: Color(0xff22223b),
+                                            fontSize: 14,
+                                            fontFamily: "Inter",
+                                            fontWeight: FontWeight.w600
+                                        ),
+                                      ),
+                                    )
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20,)
+                        ],
+                      );
+                    }
                   ),
                 )
               ],
