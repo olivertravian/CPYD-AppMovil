@@ -11,7 +11,7 @@ class ResultsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff00417c),
-      padding: const EdgeInsets.symmetric(vertical: 50, ),
+      padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 30 ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -92,14 +92,44 @@ class ResultsScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListView.builder(
-                        itemCount: pollOptions.length,
-                        itemBuilder: (context, index){
-                          return Text(pollOptions[index].selection);
-                        }
-                    )
-                  ],
+                  children: List.generate(
+                    pollOptions.length,
+                      (index){
+                        return Column(
+                          children: [
+                            Container(
+                              width: 330,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xffedf2f4)
+                              ),
+                              padding: const EdgeInsets.all(20),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                      child: SizedBox(
+                                        child: Text(
+                                          "${pollOptions[index].selection}. ${pollOptions[index].choice}",
+                                          style: const TextStyle(
+                                              color: Color(0xff22223b),
+                                              fontSize: 14,
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w600
+                                          ),
+                                        ),
+                                      )
+                                  )
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20,)
+                          ],
+                        );
+                      }
+                  ),
                 )
               ],
             ),

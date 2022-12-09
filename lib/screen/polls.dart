@@ -10,7 +10,7 @@ class PollsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff00417c),
-      padding: const EdgeInsets.symmetric(vertical: 50, ),
+      padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 30 ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -20,8 +20,8 @@ class PollsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
                     onPressed: () => Navigator.pop(context),
@@ -31,7 +31,7 @@ class PollsScreen extends StatelessWidget {
                       child: Image.asset('assets/back.png'),
                     )
                 ),
-                const SizedBox(width: 30,),
+                const SizedBox(width: 50,),
                 const Text(
                   "Encuestas",
                   textAlign: TextAlign.center,
@@ -103,13 +103,18 @@ class PollsScreen extends StatelessWidget {
                                     ),
                                     padding: const EdgeInsets.all(10),
                                     child: TextButton( // TODO: check if is active
-                                        onPressed: () => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(builder: (context) => ResultsScreen(
-                                              pollTitle: snapshot.data?[index].name ?? "unknown",
-                                              pollOptions: snapshot.data?[index].options ?? []
-                                            ))
-                                        ),
+                                        onPressed: () {
+                                          print('/////////////////////////////');
+                                          print(snapshot.data?[index].options.length);
+
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => ResultsScreen(
+                                                  pollTitle: snapshot.data?[index].name ?? "unknown",
+                                                  pollOptions: snapshot.data?[index].options ?? []
+                                              ))
+                                          );
+                                        },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment: MainAxisAlignment.start,
