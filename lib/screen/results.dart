@@ -13,7 +13,7 @@ class ResultsScreen extends StatefulWidget {
 }
 
 class _ResultsState extends State<ResultsScreen> {
-
+  List<bool> buttonColor = [true,true,true];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -108,7 +108,7 @@ class _ResultsState extends State<ResultsScreen> {
                             width: 330,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xffedf2f4)
+                                color: (buttonColor[index] == false) ? const Color(0xff009850) : const Color(0xffedf2f4)
                             ),
                             padding: const EdgeInsets.all(20),
                             child: Row(
@@ -118,13 +118,27 @@ class _ResultsState extends State<ResultsScreen> {
                               children: [
                                 Expanded(
                                     child: SizedBox(
-                                      child: Text(
-                                        "${widget.pollOptions[index].selection}. ${widget.pollOptions[index].choice}",
-                                        style: const TextStyle(
-                                            color: Color(0xff22223b),
-                                            fontSize: 14,
-                                            fontFamily: "Inter",
-                                            fontWeight: FontWeight.w600
+                                      child: ElevatedButton(
+                                        onPressed: (){
+                                          setState(() {
+                                            for (var i=0; i<buttonColor.length; i++) {
+                                              if (i == index) {
+                                                buttonColor[index] = false;
+                                              }
+                                              else {
+                                                buttonColor[i] = true;
+                                              }
+                                            }
+                                          });
+                                        },
+                                        child: Text(
+                                          "${widget.pollOptions[index].selection}. ${widget.pollOptions[index].choice}",
+                                          style: TextStyle(
+                                              color: (buttonColor[index] == false) ? const Color(0xffedf2f4) : const Color(0xff22223b),
+                                              fontSize: 14,
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w600
+                                          ),
                                         ),
                                       ),
                                     )
