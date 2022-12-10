@@ -89,37 +89,22 @@ class VoterService {
     return [];
   }
 
-  static Future<List<Poll>> vote(String pollToken, String selection) async {
-    final String token = await UserSecureStorage.getJwt() ?? "";
+  static Future<int> vote(String pollToken, String selection) async {
+    final String userToken = await UserSecureStorage.getJwt() ?? "";
 
-    Uri uri = Uri.parse('$_host/vote/v1/voter/polls');
+    Uri uri = Uri.parse('$_host/vote/v1/voter/vote');
     Map<String, String> headers = {
       'accept': _mime,
       'Content-Type': _mime,
-      'Authorization': token,
+      'Authorization': userToken,
+    };
+    Map<String, String> body = {
+      'pollToken': pollToken,
+      'selection': selection // TODO: test if accept this as string
     };
 
-    final response = await http.get(uri, headers: headers);
-    if (response.statusCode == 200) {
-      var result = json.decode(utf8.decode(response.bodyBytes));
+    final response = await http.post(uri, headers: headers, body: jsonEncode(body));
 
-      List<Poll> polls = List.filled(
-          result.length,
-          const Poll(
-              name: "",
-              token: "",
-              options: [],
-              active: ""
-          )
-      );
-
-      for (var i = 0; i< result.length; i++) {
-        polls[i] = Poll.fromJSON(result[i]);
-      }
-      return polls;
-
-    }
-
-    return [];
+    return response.statusCode;
   }
 }
