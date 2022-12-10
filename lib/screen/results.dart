@@ -13,7 +13,8 @@ class ResultsScreen extends StatefulWidget {
 }
 
 class _ResultsState extends State<ResultsScreen> {
-  List<bool> buttonColor = [true,true,true];
+  List<bool> buttonColor = [false, false, false]; // initializer
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -108,7 +109,7 @@ class _ResultsState extends State<ResultsScreen> {
                             width: 330,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: (buttonColor[index] == false) ? const Color(0xff009850) : const Color(0xffedf2f4)
+                                color: (buttonColor[index] == true) ? const Color(0xff009850) : const Color(0xffedf2f4)
                             ),
                             padding: const EdgeInsets.all(20),
                             child: Row(
@@ -118,29 +119,29 @@ class _ResultsState extends State<ResultsScreen> {
                               children: [
                                 Expanded(
                                     child: SizedBox(
-                                      child: ElevatedButton(
-                                        onPressed: (){
-                                          setState(() {
-                                            for (var i=0; i<buttonColor.length; i++) {
-                                              if (i == index) {
-                                                buttonColor[index] = false;
-                                              }
-                                              else {
-                                                buttonColor[i] = true;
-                                              }
-                                            }
-                                          });
-                                        },
-                                        child: Text(
-                                          "${widget.pollOptions[index].selection}. ${widget.pollOptions[index].choice}",
-                                          style: TextStyle(
-                                              color: (buttonColor[index] == false) ? const Color(0xffedf2f4) : const Color(0xff22223b),
-                                              fontSize: 14,
-                                              fontFamily: "Inter",
-                                              fontWeight: FontWeight.w600
-                                          ),
-                                        ),
-                                      ),
+                                     child: TextButton(
+                                       onPressed: (){
+                                         setState(() {
+                                           for (var i=0; i<buttonColor.length; i++) {
+                                             if (i == index) {
+                                               buttonColor[index] = true;
+                                             }
+                                             else {
+                                               buttonColor[i] = false;
+                                             }
+                                           }
+                                         });
+                                       },
+                                       child: Text(
+                                         "${widget.pollOptions[index].selection}. ${widget.pollOptions[index].choice}",
+                                         style: TextStyle(
+                                             color: (buttonColor[index] == true) ? const Color(0xffedf2f4) : const Color(0xff22223b),
+                                             fontSize: 14,
+                                             fontFamily: "Inter",
+                                             fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     )
                                     )
                                 )
                               ],
@@ -150,6 +151,46 @@ class _ResultsState extends State<ResultsScreen> {
                         ],
                       );
                     }
+                  ),
+                ),
+                const SizedBox(height: 40),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xff009850)
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 16,
+                        height: 16,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8)
+                        ),
+                        child: Image.asset('assets/send.png'),
+                      ),
+                      const SizedBox(width: 10,),
+                      TextButton(
+                          onPressed: () {
+                            // params: token, selection
+                            print("Presiona bo");
+                          },
+                          child: const Text(
+                            "Enviar",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: "Inter",
+                                fontWeight: FontWeight.w700
+                            ),
+                          )
+                      )
+                    ],
                   ),
                 )
               ],

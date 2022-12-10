@@ -88,4 +88,38 @@ class VoterService {
 
     return [];
   }
+
+  static Future<List<Poll>> vote(String pollToken, String selection) async {
+    final String token = await UserSecureStorage.getJwt() ?? "";
+
+    Uri uri = Uri.parse('$_host/vote/v1/voter/polls');
+    Map<String, String> headers = {
+      'accept': _mime,
+      'Content-Type': _mime,
+      'Authorization': token,
+    };
+
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      var result = json.decode(utf8.decode(response.bodyBytes));
+
+      List<Poll> polls = List.filled(
+          result.length,
+          const Poll(
+              name: "",
+              token: "",
+              options: [],
+              active: ""
+          )
+      );
+
+      for (var i = 0; i< result.length; i++) {
+        polls[i] = Poll.fromJSON(result[i]);
+      }
+      return polls;
+
+    }
+
+    return [];
+  }
 }
