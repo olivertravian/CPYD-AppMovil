@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:voting_system/model/poll_option.dart';
 import 'package:voting_system/service/voter.dart';
 
-class ResultsScreen extends StatefulWidget {
+class VoteScreen extends StatefulWidget {
   final String pollToken;
   final String pollTitle;
   final List<PollOption> pollOptions;
 
-  const ResultsScreen({super.key, required this.pollToken , required this.pollTitle, required this.pollOptions});
+  const VoteScreen({super.key, required this.pollToken , required this.pollTitle, required this.pollOptions});
 
   @override
-  State<ResultsScreen> createState() => _ResultsState();
+  State<VoteScreen> createState() => _VoteState();
 }
 
-class _ResultsState extends State<ResultsScreen> {
+class _VoteState extends State<VoteScreen> {
   List<bool> buttonColor = [false, false, false]; // TODO: what if are 2 options
 
   @override

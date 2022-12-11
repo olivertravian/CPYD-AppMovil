@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:voting_system/widgets/members.dart';
 
-class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key});
+class MembersScreen extends StatelessWidget {
+  MembersScreen({super.key});
+
+  List<Map<String, String>> integrantes = [
+    {
+      "picture": "assets/members/julio.png",
+      "name": "Julio Aceituno Zelaya",
+      "role": "Documentador y programador",
+      "description": "Experto en dejar todo para útilma hora.",
+      "github": "@jaceitunoz"
+    },
+    {
+      "picture": "assets/members/enrique.png",
+      "name": "Enrique Villalobos Andrade",
+      "role": "Programador",
+      "description": "Perteneciente a la iglesia de linux.\nHater de windows.",
+      "github": "@yowls"
+    },
+    {
+      "picture": "assets/members/oliver.png",
+      "name": "Oliver Chacon Alvarez",
+      "role": "Documentador y desarrollador",
+      "description": "Cazador de sueños y profugo nocturno.",
+      "github": "@olivertravian"
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +53,9 @@ class ResultsScreen extends StatelessWidget {
                     color: const Color(0xffedf2f4)
                   ),
                 ),
-                const SizedBox(width: 30,),
+                SizedBox(width: 30,),
                 const Text(
-                  "Revisa los resultados",
+                  "Integrantes",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xffedf2f4),
@@ -51,7 +76,9 @@ class ResultsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Votaciones aqui")
+                Members(member: integrantes[0]),
+                Members(member: integrantes[1]),
+                Members(member: integrantes[2]),
               ],
             ),
           )

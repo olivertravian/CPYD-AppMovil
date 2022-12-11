@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voting_system/service/secure_storage.dart';
 import 'package:voting_system/screen/polls.dart';
+import 'package:voting_system/screen/results.dart';
+import 'package:voting_system/screen/members.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -166,7 +168,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20,),
               TextButton(
-                onPressed: () => print("--> Go to Results"),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ResultsScreen())
+                ),
                 child: Container(
                   width: 190,
                   decoration: BoxDecoration(
@@ -204,7 +209,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20,),
               TextButton(
-                  onPressed: () => print("--> Go to Integrantes"),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MembersScreen())
+                  ),
                   child: Container(
                     width: 190,
                     decoration: BoxDecoration(

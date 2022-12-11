@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voting_system/service/voter.dart';
 import 'package:voting_system/model/poll.dart';
-import 'package:voting_system/screen/results.dart';
+import 'package:voting_system/screen/vote.dart';
 
 class PollsScreen extends StatelessWidget {
   late Future<List<Poll>> polls;
@@ -105,7 +105,7 @@ class PollsScreen extends StatelessWidget {
                                     child: TextButton( // TODO: check if is active
                                         onPressed: () => Navigator.push(
                                             context,
-                                            MaterialPageRoute(builder: (context) => ResultsScreen(
+                                            MaterialPageRoute(builder: (context) => VoteScreen(
                                               pollToken: snapshot.data?[index].token ?? "unknown",
                                               pollTitle: snapshot.data?[index].name ?? "unknown",
                                               pollOptions: snapshot.data?[index].options ?? [],
