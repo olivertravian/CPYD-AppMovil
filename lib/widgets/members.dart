@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Members extends StatelessWidget {
   final Map<String, String> member;
 
-  Members({super.key, required this.member});
+  const Members({super.key, required this.member});
 
   @override
   Widget build(BuildContext context) {

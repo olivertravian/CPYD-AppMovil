@@ -45,15 +45,15 @@ class MembersScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 16,
-                  height: 16,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: const Color(0xffedf2f4)
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: Image.asset('assets/back.png'),
                   ),
                 ),
-                SizedBox(width: 30,),
+                const SizedBox(width: 30,),
                 const Text(
                   "Integrantes",
                   textAlign: TextAlign.center,
@@ -69,16 +69,21 @@ class MembersScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40,),
-          Container(
+          SizedBox(
             width: 330,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Members(member: integrantes[0]),
-                Members(member: integrantes[1]),
-                Members(member: integrantes[2]),
+                Expanded(
+                    child: ListView.builder(
+                        itemCount: integrantes.length,
+                        itemBuilder: (context, index) {
+                          return Members(member: integrantes[index]);
+                        }
+                    )
+                )
               ],
             ),
           )
