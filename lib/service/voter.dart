@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:voting_system/screen/authorization.dart';
 import 'package:voting_system/service/secure_storage.dart';
 import 'package:voting_system/model/poll.dart';
+import 'package:voting_system/model/result.dart';
+import 'package:voting_system/model/result_choices.dart';
 
 class VoterService {
   static const String _host = "https://api.sebastian.cl";
@@ -87,6 +89,36 @@ class VoterService {
     }
 
     return [];
+  }
+
+  static Future<PollResult> getResult(String pollToken) async {
+    final String userToken = await UserSecureStorage.getJwt() ?? "";
+
+    Uri uri = Uri.parse('$_host/vote/v1/$pollToken/results');
+    Map<String, String> headers = {
+      'accept': _mime,
+      'Content-Type': _mime,
+      'Authorization': userToken,
+    };
+
+    String name = "";
+    List<PollResults> pollResults = [];
+
+    final response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      var result = json.decode(utf8.decode(response.bodyBytes));
+
+      print(result);
+
+      name = result['name'];
+      List<PollResults> res = result['results'];
+
+     for (var i=0; i< res.length; i++) {
+       pollResults.add(PollResults(choice: res[i].choice, total: res[i].total));
+     }
+    }
+
+    return PollResult(name: name, results: pollResults);
   }
 
   static Future<int> vote(String pollToken, String selection) async {
